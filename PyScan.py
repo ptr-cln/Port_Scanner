@@ -33,7 +33,7 @@ if __name__ == "__main__":
 
             #Input Checker
             try:
-                port_to_scan = el['Port_Number']
+                port_to_scan = int(el['Port_Number'])
             except ValueError:
                 continue
 
