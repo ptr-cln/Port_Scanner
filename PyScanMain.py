@@ -1,10 +1,11 @@
 from PyScanThread import *
 from PyScanUtils import *
+from collections import OrderedDict
+from operator import itemgetter
 
 PORTS_DATA_FILE = "./resources/Common_Used_Ports.json"
 
 threads = []
-total_open_ports = []
 
 if __name__ == "__main__":
     extractJsonData(PORTS_DATA_FILE)
@@ -21,10 +22,9 @@ if __name__ == "__main__":
     for thread in threads:
         thread.join()
 
-# Merge,order and print all open ports
-    for thread in threads:
-        total_open_ports.extend(thread.open_ports)
+# Sort and print all open ports
+    PyScanThread.OPEN_PORTS =  orderListOfDict(PyScanThread.OPEN_PORTS)
 
     print("Open Ports:")
-    for openPort in total_open_ports:
+    for openPort in PyScanThread.OPEN_PORTS:
         print(str(openPort['Port_Number']) , " | " , openPort['Description'] , " | " , "Protocol: " , openPort['Transport_Protocol'])

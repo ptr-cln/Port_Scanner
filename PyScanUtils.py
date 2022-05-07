@@ -22,3 +22,9 @@ def isPortOpen(ip,port):
     if conn_status == 0:
         return True
     sock.close()
+
+# Work in progress
+def orderListOfDict(listOfDict):
+    return listOfDict
+       
+

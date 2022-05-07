@@ -3,13 +3,13 @@ from PyScanUtils import *
 
 class PyScanThread (Thread):
 
+   OPEN_PORTS = []
+
    def __init__(self, threadId, ip_addr,ports_info):
       Thread.__init__(self)
       self.threadId = threadId
       self.ip_addr = ip_addr
       self.ports_info = ports_info
-
-      self.open_ports = []
 
 
    def run(self):
@@ -23,7 +23,7 @@ class PyScanThread (Thread):
 
             print(f"Scanning :  {self.ip_addr} : {port_to_scan} | Protocol: {el['Transport_Protocol']} \n")
             if(isPortOpen(self.ip_addr,port_to_scan)):
-                self.open_ports.append(el)
+                self.OPEN_PORTS.append(el)
             
         except KeyboardInterrupt:
             print("Execution interrupted")
