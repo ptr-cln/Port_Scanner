@@ -23,6 +23,28 @@ def isPortOpen(ip,port):
         return True
     sock.close()
 
+# Returns a list of lists
+def splitListOfPorts(portsList,totalThreads):
+    
+    output = []
+    
+    listLen = len(portsList)
+    elForEachThread = int(listLen / totalThreads)
+    
+    startsFrom = 0
+    endTo = elForEachThread
+    for x in range (0 , totalThreads):
+        
+        if(x == (totalThreads -1 )):
+            output.append(portsList[startsFrom:])
+        else:
+            output.append(portsList[startsFrom:endTo])
+            startsFrom = startsFrom + elForEachThread
+            endTo = endTo + elForEachThread
+    return output
+    
+    
+
 # Work in progress
 def orderListOfDict(listOfDict):
     return listOfDict
