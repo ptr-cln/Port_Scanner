@@ -5,11 +5,12 @@ from operator import itemgetter
 
 PORTS_DATA_FILE = "./resources/Common_Used_Ports.json"
 
+# Number of how many threads will be used 
 totalThreads = 10
+
 threads = []
 
 if __name__ == "__main__":
-    extractJsonData(PORTS_DATA_FILE)
     target = input("Insert target: ")
     ip_addr = getHostIpAddr(target)
     portsList = extractJsonData(PORTS_DATA_FILE)
@@ -26,9 +27,8 @@ if __name__ == "__main__":
     for thread in threads:
         thread.join()
 
-# Sorting and printing all open ports
-    #PyScanThread.OPEN_PORTS =  orderListOfDict(PyScanThread.OPEN_PORTS)
-
+# Printing all open ports
+    
     print("Open Ports:")
     for openPort in PyScanThread.OPEN_PORTS:
         print(str(openPort['Port_Number']) , " | " , openPort['Description'] , " | " , "Protocol: " , openPort['Transport_Protocol'])

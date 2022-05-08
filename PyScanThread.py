@@ -21,7 +21,7 @@ class PyScanThread (Thread):
             except ValueError:
                 continue
 
-            print(f"Scanning :  {self.ip_addr} : {port_to_scan} | Protocol: {el['Transport_Protocol']} \n")
+            print(f"Scanning :  {self.ip_addr} : {port_to_scan} | Protocol: {el['Transport_Protocol']} | ThreadID: {self.threadId} \n")
             if(isPortOpen(self.ip_addr,port_to_scan)):
                 self.OPEN_PORTS.append(el)
             
