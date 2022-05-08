@@ -1,4 +1,8 @@
 # Port Scanner
+:warning: <b>IMPORTANT</b> :warning: <br>
+<i> Please, scan a certain host only if you are authorized to do it.<br>
+ Scanning a host without authorization can be <b>illegal</b>,I am not responsible if you do this.</i> <br><br>
+
 Hello there!<br>
 This is a multithread port scanner, written in <b>Python3</b>.<br>
 It reads a json file that contains a lot of commonly used ports,then it will list what of those ports are open on a specific hostname (Given in input)<br>
@@ -12,3 +16,4 @@ You can change the amount of threads to use changing <b>"totalThreads"</b> in <b
 
 ![Alt text](https://raw.githubusercontent.com/ptr-cln/Port_Scanner/main/resources/screenshots/Screenshot.JPG)<br>
 
+ 
