@@ -43,10 +43,16 @@ def splitListOfPorts(portsList,totalThreads):
             endTo = endTo + elForEachThread
     return output
     
-    
-
 # Work in progress
 def orderListOfDict(listOfDict):
     return listOfDict
+
+
+def printFile(openPort,ipAddr):
+
+    file = open("./Scan_" + str(ipAddr) + ".txt","a")
+    file.write(str(ipAddr) + ":" + (str(openPort['Port_Number']) + " | " + openPort['Description'] + " | " + "Protocol: " + openPort['Transport_Protocol']) + "\n")
+    
+    file.close
        
 
