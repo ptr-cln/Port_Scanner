@@ -21,9 +21,10 @@ class PyScanThread (Thread):
             except ValueError:
                 continue
 
-            print(f"Scanning :  {self.ip_addr} : {port_to_scan} | Protocol: {el['Transport_Protocol']} | ThreadID: {self.threadId} \n")
+            print(f"\nScanning :  {self.ip_addr} : {port_to_scan} | Protocol: {el['Transport_Protocol']} | ThreadID: {self.threadId}")
             if(isPortOpen(self.ip_addr,port_to_scan)):
                 self.OPEN_PORTS.append(el)
+                printFile(el,self.ip_addr)
             
         except KeyboardInterrupt:
             print("Execution interrupted")
