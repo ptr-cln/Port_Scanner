@@ -11,11 +11,7 @@ class PyScanThread (Thread):
             print(msg)
             
             
-   def printFileWithLock(self,openPort,ipAddr):
-        with self.LOCK:
-            file = open("./Scan_" + str(ipAddr) + ".txt","a")
-            file.write(str(ipAddr) + " : " + (str(openPort['Port_Number']) + " | " + openPort['Description'] + "\n"))
-            file.close
+
             
    def appendWithLock(self,el):
         with self.LOCK:
@@ -42,7 +38,6 @@ class PyScanThread (Thread):
             self.printWithLock(f"Scanning :  {self.ip_addr} : {port_to_scan} | ThreadID: {self.threadId}")
             if(isPortOpen(self.ip_addr,port_to_scan)):
                 self.appendWithLock(el)
-                self.printFileWithLock(el,self.ip_addr)
             
         except KeyboardInterrupt:
             print("Execution interrupted")

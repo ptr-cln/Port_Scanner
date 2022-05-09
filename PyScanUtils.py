@@ -27,6 +27,11 @@ def isPortOpen(ip,port):
         return True
     sock.close()
 
+def printFile(openPort,ipAddr):
+    file = open("./Scan_" + str(ipAddr) + ".txt","a")
+    file.write(str(ipAddr) + " : " + (str(openPort['Port_Number']) + " | " + openPort['Description'] + "\n"))
+    file.close
+            
 # Returns a list of lists
 def splitListOfPorts(portsList,totalThreads):
     

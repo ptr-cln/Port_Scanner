@@ -32,5 +32,6 @@ if __name__ == "__main__":
     print("Open Ports:")
     for openPort in PyScanThread.OPEN_PORTS:
         print(str(ipAddr) + " : " + (str(openPort['Port_Number']) + " | " + openPort['Description']))
+        printFile(openPort,ipAddr)
     
     print("\n----------------------------------------------------------------------------")
