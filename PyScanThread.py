@@ -16,6 +16,10 @@ class PyScanThread (Thread):
             file = open("./Scan_" + str(ipAddr) + ".txt","a")
             file.write(str(ipAddr) + ":" + (str(openPort['Port_Number']) + " | " + openPort['Description'] + " | " + "Protocol: " + openPort['Transport_Protocol']) + "\n")
             file.close
+            
+   def appendWithLock(self,el):
+        with self.LOCK:
+            self.OPEN_PORTS.append(el)
         
         
    def __init__(self, threadId, ip_addr,ports_info):
@@ -37,7 +41,7 @@ class PyScanThread (Thread):
             
             self.printWithLock(f"Scanning :  {self.ip_addr} : {port_to_scan} | Protocol: {el['Transport_Protocol']} | ThreadID: {self.threadId}")
             if(isPortOpen(self.ip_addr,port_to_scan)):
-                self.OPEN_PORTS.append(el)
+                self.appendWithLock(el)
                 self.printFileWithLock(el,self.ip_addr)
             
         except KeyboardInterrupt:
