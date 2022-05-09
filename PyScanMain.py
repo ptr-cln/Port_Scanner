@@ -4,7 +4,7 @@ from PyScanUtils import *
 PORTS_DATA_FILE = "./resources/Common_Used_Ports.json"
 
 # Number of how many threads will be used 
-totalThreads = 10
+totalThreads = 1000
 
 threads = []
 
@@ -31,6 +31,7 @@ if __name__ == "__main__":
     
     print("Open Ports:")
     for openPort in PyScanThread.OPEN_PORTS:
-        print(str(ipAddr) + ":" + (str(openPort['Port_Number']) + " | " + openPort['Description'] + " | " + "Protocol: " + openPort['Transport_Protocol']))
+        print(str(ipAddr) + " : " + (str(openPort['Port_Number']) + " | " + openPort['Description']))
+        printFile(openPort,ipAddr)
     
     print("\n----------------------------------------------------------------------------")
