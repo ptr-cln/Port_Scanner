@@ -4,7 +4,7 @@ from PyScanUtils import *
 PORTS_DATA_FILE = "./resources/Common_Used_Ports.json"
 
 # Number of how many threads will be used 
-totalThreads = 10
+totalThreads = 1000
 
 threads = []
 
