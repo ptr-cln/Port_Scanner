@@ -1,5 +1,6 @@
 import json
 import socket
+import re
 
 def extractJsonData(filename):
     with open(filename , "r") as file:
@@ -7,13 +8,16 @@ def extractJsonData(filename):
     return data
 
 def getHostIpAddr(target):
+    if re.match(r"^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$", str(target)):
+        return target
+    
     try:
-        ip_addr = socket.gethostbyname(target)
-        print("Ip address of " + (target) + " = " + ip_addr)
+        ipAddr = socket.gethostbyname(target)
+        print("Ip address of " + (target) + " = " + ipAddr)
     except socket.gaierror as e:
         print(f"ERROR: {e}")
     else:
-        return ip_addr
+        return ipAddr
 
 def isPortOpen(ip,port):
     sock = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
