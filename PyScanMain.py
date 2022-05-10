@@ -25,12 +25,14 @@ if __name__ == "__main__":
     for thread in threads:
         thread.join()
 
+# Sorting and Removing duplicates
+    output = prettifyOutput(PyScanThread.OPEN_PORTS)
+    
 # Printing all open ports
-
     print("\n----------------------------------------------------------------------------")
     
     print("Open Ports:")
-    for openPort in PyScanThread.OPEN_PORTS:
+    for openPort in output:
         print(str(ipAddr) + " : " + (str(openPort['Port_Number']) + " | " + openPort['Description']))
         printFile(openPort,ipAddr)
     

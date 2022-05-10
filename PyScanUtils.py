@@ -52,11 +52,30 @@ def splitListOfPorts(portsList,totalThreads):
             endTo = endTo + elForEachThread
     return output
     
-# Work in progress
-def orderListOfDict(listOfDict):
-    return listOfDict
+# Removes duplicates and sorts the list of ports (Ascending order)
+def prettifyOutput(listOfDict):
+    
+    output=[]
+    portsTmp=[]
+    
+    for port in listOfDict:
+        if port['Port_Number'] not in portsTmp:
+            portsTmp.append(port['Port_Number'])
+        
+    sortArr(portsTmp)
+    
+    for port in portsTmp:
+        portInDict = next((item for item in listOfDict if item['Port_Number'] == port), None)
+        output.append(portInDict)
+    
+    return output
 
-
+def sortArr(arr):
+    n = len(arr)
+    for i in range(n-1):
+        for j in range(0, n-i-1):
+            if arr[j] > arr[j + 1] :
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
 
        
 
